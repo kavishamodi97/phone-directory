@@ -1,9 +1,10 @@
-import React ,{Component} from 'react';
+import React, { Component } from 'react';
 
-class App extends Comment {
-  render(){
+class App extends Component {
+  render() {
     return (
       <div>
+        Phone Directory
       </div>
     );
   }
