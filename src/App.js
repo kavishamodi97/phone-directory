@@ -4,23 +4,14 @@ import './App.css';
 
 class App extends Component {
 
-deleteHandler(message){
-alert(message);
-}
+   constructor(){
+     super();
+     this.state={
+       subscribersListToShow: []
+     }
+   }
 
   render() {
-    let subscribers = [
-      {
-        id: 1,
-        name: "Shilpa Bhat",
-        phone: "8888888888"
-      },
-      {
-        id: 2,
-        name: "Srishti Gupta",
-        phone: "9999999999"
-      }
-    ];
     return (
       <div className="component-container">
         <Header heading="Phone Directory"/>
@@ -32,12 +23,12 @@ alert(message);
           </div>
 
           {
-            subscribers.map(sub => {
+            this.state.subscribersListToShow.map(sub => {
               return <div key={sub.id} className="grid-container">
                 <span className="grid-item">{sub.name}</span>
                 <span className="grid-item">{sub.phone}</span>
                 <span className="grid-item action-btn-container">
-                  <button className="custom-btn delete-btn" onClick={this.deleteHandler.bind(this,"Delete Handler Clicked")}>Delete</button>
+                  <button className="custom-btn delete-btn">Delete</button>
                 </span>
               </div>
             })
