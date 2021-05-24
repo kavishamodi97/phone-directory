@@ -33,11 +33,25 @@ class PhoneDirectory extends Component {
         this.setState({ subscribersList: subscribersList });
     }
 
+
+    deleteSubscriberHandler = (subscriberId) => {
+        let subscribersList = this.state.subscribersList;
+        let subscriberIndex = 0;
+        subscribersList.forEach(function (subscriber, index) {
+            if (subscriber.id == subscriberId) {
+                subscriberIndex = index;
+
+            }
+        }, this);
+        let newScribers = subscribersList;
+        newScribers.splice(subscriberIndex, 1);
+        this.setState({ subscribers: newScribers });
+    }
     render() {
         return (
             <Router>
                 <div>
-                    <Route exact path="/" render={(props) => <ShowSubscribers {...props} subscribersList={this.state.subscribersList} />} />
+                    <Route exact path="/" render={(props) => <ShowSubscribers {...props} subscribersList={this.state.subscribersList} deleteSubscriberHandler={this.deleteSubscriberHandler} />} />
                     <Route exact path="/add" render={({ history }, props) => <AddSubscriber history={history} {...props} addSubscriberHandler={this.addSubscriberHandler} />} />
                 </div>
             </Router>
